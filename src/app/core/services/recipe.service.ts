@@ -23,6 +23,17 @@ export class RecipeService {
       map(response => response.meals || [])
     );
   }
+   
+ getTrendingRecipes():Observable<any[]>{
+
+  const categories = ['Beef', 'Chicken', 'Dessert', 'Pasta', 'Seafood', 'Vegetarian'];
+  const randomCategory = categories[Math.floor(Math.random() * categories.length)];
+  return this.getRecipesByCategory(randomCategory).pipe(
+    map(recipes => recipes.slice(0,6)) 
+  );
+ }
+
+
 
   getRecipeById(id: string): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/lookup.php?i=${id}`).pipe(
