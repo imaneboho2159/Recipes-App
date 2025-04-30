@@ -85,36 +85,36 @@ export class RecipeListComponent implements OnInit {
     });
   }
 
-  // filterByCategory(): void {
-  //   if (this.selectedCategory === 'All') {
-  //     this.loadAllRecipes();
-  //     return;
-  //   }
-  //   this.isLoading = true;
-  //   this.error = null;
-  //   this.recipeService.getRecipesByCategory(this.selectedCategory).subscribe({
-  //     next: (recipes) => {
-  //       this.menuItems = recipes.map(recipe => ({
-  //         id: recipe.idMeal,
-  //         name: recipe.strMeal,
-  //         image: recipe.strMealThumb,
-  //         description: 'No description available', // getRecipesByCategory doesn't return strInstructions
-  //         rating: this.ratingService.getRating(recipe.idMeal)
-  //       }));
-  //       this.isLoading = false;
-  //     },
-  //     error: (error) => {
-  //       this.error = 'Failed to filter recipes. Please try again later.';
-  //       console.error('Error filtering recipes:', error);
-  //       this.isLoading = false;
-  //     }
-  //   });
-  // }
+  filterByCategory(): void {
+    if (this.selectedCategory === 'All') {
+      this.loadAllRecipes();
+      return;
+    }
+    this.isLoading = true;
+    this.error = null;
+    this.recipeService.getRecipesByCategory(this.selectedCategory).subscribe({
+      next: (recipes) => {
+        this.menuItems = recipes.map(recipe => ({
+          id: recipe.idMeal,
+          name: recipe.strMeal,
+          image: recipe.strMealThumb,
+          description: 'No description available', // getRecipesByCategory doesn't return strInstructions
+          rating: this.ratingService.getRating(recipe.idMeal)
+        }));
+        this.isLoading = false;
+      },
+      error: (error) => {
+        this.error = 'Failed to filter recipes. Please try again later.';
+        console.error('Error filtering recipes:', error);
+        this.isLoading = false;
+      }
+    });
+  }
 
-  // setRating(recipeId: string, rating: number): void {
-  //   this.ratingService.setRating(recipeId, rating);
-  //   this.menuItems = this.menuItems.map(item =>
-  //     item.id === recipeId ? { ...item, rating } : item
-  //   );
-  // }
+  setRating(recipeId: string, rating: number): void {
+    this.ratingService.setRating(recipeId, rating);
+    this.menuItems = this.menuItems.map(item =>
+      item.id === recipeId ? { ...item, rating } : item
+    );
+  }
 }
