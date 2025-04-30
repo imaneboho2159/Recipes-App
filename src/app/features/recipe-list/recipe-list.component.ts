@@ -59,31 +59,31 @@ export class RecipeListComponent implements OnInit {
     });
   }
 
-  // searchRecipes(): void {
-  //   if (!this.searchQuery.trim()) {
-  //     this.loadAllRecipes();
-  //     return;
-  //   }
-  //   this.isLoading = true;
-  //   this.error = null;
-  //   this.recipeService.searchRecipesByName(this.searchQuery).subscribe({
-  //     next: (recipes) => {
-  //       this.menuItems = recipes.map(recipe => ({
-  //         id: recipe.idMeal,
-  //         name: recipe.strMeal,
-  //         image: recipe.strMealThumb,
-  //         description: recipe.strInstructions ? recipe.strInstructions.substring(0, 100) + '...' : 'No description available',
-  //         rating: this.ratingService.getRating(recipe.idMeal)
-  //       }));
-  //       this.isLoading = false;
-  //     },
-  //     error: (error) => {
-  //       this.error = 'Failed to search recipes. Please try again later.';
-  //       console.error('Error searching recipes:', error);
-  //       this.isLoading = false;
-  //     }
-  //   });
-  // }
+  searchRecipes(): void {
+    if (!this.searchQuery.trim()) {
+      this.loadAllRecipes();
+      return;
+    }
+    this.isLoading = true;
+    this.error = null;
+    this.recipeService.searchRecipesByName(this.searchQuery).subscribe({
+      next: (recipes) => {
+        this.menuItems = recipes.map(recipe => ({
+          id: recipe.idMeal,
+          name: recipe.strMeal,
+          image: recipe.strMealThumb,
+          description: recipe.strInstructions ? recipe.strInstructions.substring(0, 100) + '...' : 'No description available',
+          rating: this.ratingService.getRating(recipe.idMeal)
+        }));
+        this.isLoading = false;
+      },
+      error: (error) => {
+        this.error = 'Failed to search recipes. Please try again later.';
+        console.error('Error searching recipes:', error);
+        this.isLoading = false;
+      }
+    });
+  }
 
   // filterByCategory(): void {
   //   if (this.selectedCategory === 'All') {
