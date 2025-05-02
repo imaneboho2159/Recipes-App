@@ -1,5 +1,5 @@
 <div class="bg-green-900 text-white min-h-screen font-sans">
-    <app-navbar></app-navbar>
+
   
     <section class="px-8 py-10">
       <h2 class="text-3xl font-bold mb-6 text-center">MENU</h2>
@@ -57,11 +57,11 @@
   
           <!-- Show Details Link -->
           <a
-            [routerLink]="['/recipe', item.id]"
-            class="mt-3 inline-block bg-yellow-400 hover:bg-yellow-300 text-green-900 font-bold py-2 px-4 rounded-full transition duration-300"
-          >
-            Show Details
-          </a>
+          [routerLink]="['/recipe', item.id]"
+          class="mt-3 inline-block bg-yellow-400 hover:bg-yellow-300 text-green-900 font-bold py-2 px-4 rounded-full transition duration-300 cursor-pointer"
+        >
+          Show Details
+        </a>
         </div>
       </div>
     </section>
